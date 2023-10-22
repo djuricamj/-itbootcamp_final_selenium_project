@@ -1,5 +1,6 @@
 package pages;
 
+import io.netty.handler.codec.http.websocketx.extensions.WebSocketExtensionData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -74,6 +75,20 @@ public class NavPage extends BasicPage {
         wait
                 .withMessage("Current url should contain '/home'.")
                 .until(ExpectedConditions.urlContains("/home"));
+    }
+    public WebElement getLogoutButton (){
+        return driver.findElement(By.className("btnLogout"));
+    }
+    public void clickOnLogoutButton (){
+        getLogoutButton().click();
+    }
+
+    public WebElement getSignUpButton (){
+        return driver.findElement(By.cssSelector(".v-toolbar__items>a:nth-child(4)"));
+
+    }
+    public void clickOnSignUpButton (){
+        getSignUpButton().click();
     }
 }
 
