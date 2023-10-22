@@ -71,14 +71,6 @@ public class LoginTests extends BasicTest{
                 "Current url should be " + baseUrl + "/login");
 
     }
-//    Test #5: Login
-//Podaci:
-//email: admin@admin.com
-//password: 12345
-//Koraci:
-//Klik na login dugme iz navigacije
-//Popuniti login formu podacima za logovanje
-//Verifikovati da se u url-u stranice javlja /home ruta
     @Test (priority = 5, retryAnalyzer = retry.class)
     public void login (){
      String email = "admin@admin.com";
@@ -91,16 +83,18 @@ public class LoginTests extends BasicTest{
      loginPage.clickOnLoginButton();
      navPage.waitUntilCurrentUrlContainsHome();
 
-
-
-
-
-
     }
 
+    @Test(priority = 6, retryAnalyzer = retry.class)
+    public void logout (){
 
+        this.login();
+        Assert.assertTrue(navPage.getLogoutButton().isDisplayed(),
+                "Logout button should be visible.");
+        navPage.clickOnLogoutButton();
+        navPage.waitUntilCurrentUrlContainsLogin();
 
-
+    }
 
 
 }
