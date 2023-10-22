@@ -14,6 +14,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import pages.LoginPage;
 import pages.NavPage;
 
 import java.io.File;
@@ -26,6 +27,7 @@ public abstract class BasicTest {
     protected WebDriverWait wait;
     protected String baseUrl = "https://vue-demo.daniel-avellaneda.com";
     NavPage navPage;
+    LoginPage loginPage;
 
 
     @BeforeClass
@@ -37,6 +39,7 @@ public abstract class BasicTest {
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         navPage = new NavPage(driver,wait);
+        loginPage = new LoginPage(driver,wait);
 
     }
 
