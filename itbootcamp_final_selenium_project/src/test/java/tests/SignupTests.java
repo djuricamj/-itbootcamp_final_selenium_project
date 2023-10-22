@@ -27,6 +27,31 @@ public class SignupTests extends BasicTest{
                 "Password input box for attribute should have 'password'.");
         Assert. assertEquals(signupPage.getConfirmPasswordInputBoxAttributeValue(), "password",
                 "Confirm Password input box for attribute should have 'password'.");
+    }
+
+    @Test(priority = 3, retryAnalyzer = retry.class)
+    public void displaysErrorsWhenUserAlreadyExists (){
+        String name = "Another User";
+        String email = "admin@admin.com";
+        String password = "12345";
+        String confirmPassword = "12345";
+
+        navPage.clickOnSignUpButton();
+        navPage.waitUntilCurrentUrlContainsSignup();
+        signupPage.getNameInputBox().clear();
+        signupPage.getNameInputBox().sendKeys(name);
+        signupPage.getEmailInpuBox().clear();
+        signupPage.getEmailInpuBox().sendKeys(email);
+        signupPage.getPasswordInputBox().clear();
+        signupPage.getPasswordInputBox().sendKeys(password);
+        signupPage.getConfirmPasswordInputBox().clear();
+        signupPage.getConfirmPasswordInputBox().sendKeys(confirmPassword);
+        signupPage.clickOnSignupButton();
+        messagePopUpPage.waitUntilErrorPopUpMessageIsVisible();
+        Assert.assertEquals(messagePopUpPage.getErrorMessage(),
+                "E-mail already exists", "Error message should contains 'E-mail already exists'.");
+        Assert.assertEquals(navPage.getCurrentUrl(), baseUrl + "/signup",
+                "Current url should be " + baseUrl + "/signup");
 
 
     }

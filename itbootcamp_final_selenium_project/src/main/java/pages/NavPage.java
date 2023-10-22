@@ -65,30 +65,42 @@ public class NavPage extends BasicPage {
     public String getCurrentUrl() {
         return driver.getCurrentUrl();
     }
-    public void waitUntilCurrentUrlContainsLogin () {
+
+    public void waitUntilCurrentUrlContainsLogin() {
 
         wait
                 .withMessage("Current url should contain '/login'.")
                 .until(ExpectedConditions.urlContains("/login"));
     }
-    public void waitUntilCurrentUrlContainsHome () {
+
+    public void waitUntilCurrentUrlContainsHome() {
         wait
                 .withMessage("Current url should contain '/home'.")
                 .until(ExpectedConditions.urlContains("/home"));
     }
-    public WebElement getLogoutButton (){
+
+    public WebElement getLogoutButton() {
         return driver.findElement(By.className("btnLogout"));
     }
-    public void clickOnLogoutButton (){
+
+    public void clickOnLogoutButton() {
         getLogoutButton().click();
     }
 
-    public WebElement getSignUpButton (){
+    public WebElement getSignUpButton() {
         return driver.findElement(By.cssSelector(".v-toolbar__items>a:nth-child(4)"));
 
     }
-    public void clickOnSignUpButton (){
+
+    public void clickOnSignUpButton() {
         getSignUpButton().click();
+    }
+
+    public void waitUntilCurrentUrlContainsSignup() {
+
+        wait
+                .withMessage("Current url should contain '/signup'.")
+                .until(ExpectedConditions.urlContains("/signup"));
     }
 }
 
