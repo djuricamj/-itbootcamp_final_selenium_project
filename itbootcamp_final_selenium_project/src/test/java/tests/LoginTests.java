@@ -1,6 +1,8 @@
 package tests;
 
 import RetryAnalyzer.retry;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -67,6 +69,32 @@ public class LoginTests extends BasicTest{
                 "Wrong password");
         Assert.assertEquals(navPage.getCurrentUrl(), baseUrl + "/login",
                 "Current url should be " + baseUrl + "/login");
+
+    }
+//    Test #5: Login
+//Podaci:
+//email: admin@admin.com
+//password: 12345
+//Koraci:
+//Klik na login dugme iz navigacije
+//Popuniti login formu podacima za logovanje
+//Verifikovati da se u url-u stranice javlja /home ruta
+    @Test (priority = 5, retryAnalyzer = retry.class)
+    public void login (){
+     String email = "admin@admin.com";
+     String password = "12345";
+
+     navPage.clickOnLoginButton();
+     navPage.waitUntilCurrentUrlContainsLogin();
+     loginPage.getEmailInputBox().sendKeys(email);
+     loginPage.getPasswordInputBox().sendKeys(password);
+     loginPage.clickOnLoginButton();
+     navPage.waitUntilCurrentUrlContainsHome();
+
+
+
+
+
 
     }
 

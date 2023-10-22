@@ -26,39 +26,54 @@ public class NavPage extends BasicPage {
 //FR dugme iz padajuceg menija za izbor jezika
 //CN dugme iz padajuceg menija za izbor jezika
 
-public WebElement getLanguageButton (){
+    public WebElement getLanguageButton() {
         return driver.findElement(By.className("btnLocaleActivation"));
-}
-public void clickOnLanguageButton (){
-        getLanguageButton().click();
-}
+    }
 
-    public WebElement getLanguageList () {
+    public void clickOnLanguageButton() {
+        getLanguageButton().click();
+    }
+
+    public WebElement getLanguageList() {
         return driver.findElement(By.cssSelector(".menuable__content__active > div"));
     }
 
-    public void waitUntilLanguageListIsVisible () {
+    public void waitUntilLanguageListIsVisible() {
         wait
                 .withMessage("Language list should be visible.")
                 .until(ExpectedConditions.visibilityOf(getLanguageList()));
     }
 
-    public WebElement getEnglishButton () {
+    public WebElement getEnglishButton() {
         return driver.findElement(By.cssSelector("span.f-gb"));
     }
+
     public void clickOnEnglishButton() {
         getEnglishButton().click();
 
     }
 
-    public WebElement getLoginButton (){
+    public WebElement getLoginButton() {
         return driver.findElement(By.cssSelector(".v-toolbar__items>a:nth-child(3)"));
     }
-    public void clickOnLoginButton (){
+
+    public void clickOnLoginButton() {
         getLoginButton().click();
     }
 
-    public String getCurrentUrl (){
+    public String getCurrentUrl() {
         return driver.getCurrentUrl();
     }
+    public void waitUntilCurrentUrlContainsLogin () {
+
+        wait
+                .withMessage("Current url should contain '/login'.")
+                .until(ExpectedConditions.urlContains("/login"));
+    }
+    public void waitUntilCurrentUrlContainsHome () {
+        wait
+                .withMessage("Current url should contain '/home'.")
+                .until(ExpectedConditions.urlContains("/home"));
+    }
 }
+
