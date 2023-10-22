@@ -15,6 +15,21 @@ public class SignupTests extends BasicTest{
                 "Current url should be " + baseUrl + "/signup");
 
     }
+    @Test(priority = 2, retryAnalyzer = retry.class)
+    public void checksInputTypes (){
+
+        navPage.clickOnSignUpButton();
+        Assert.assertEquals(signupPage.getNameInputBoxAttributeValue(), "text",
+                "Name input box for attribute should have 'text'.");
+        Assert.assertEquals(signupPage.getEmailInputBoxAttributeValue(),"text",
+                "Email input box for attribute should have 'email'.");
+        Assert.assertEquals(signupPage.getPasswordInputBoxAttributeValue(), "password",
+                "Password input box for attribute should have 'password'.");
+        Assert. assertEquals(signupPage.getConfirmPasswordInputBoxAttributeValue(), "password",
+                "Confirm Password input box for attribute should have 'password'.");
+
+
+    }
 
 
 
