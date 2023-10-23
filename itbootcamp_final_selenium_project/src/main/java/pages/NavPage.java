@@ -123,6 +123,19 @@ public class NavPage extends BasicPage {
                 .until(ExpectedConditions.urlContains("/admin/cities"));
     }
 
+    public WebElement getSpanishLanguage () {
+        return driver.findElement(By.cssSelector("span.f-es"));
+    }
+    public void clickOnSpanishLanguage () {
+        getSpanishLanguage().click();
+    }
+    public WebElement getHeader () {
+        return driver.findElement(By.cssSelector("h1.display-2"));
+    }
+    public String getHeaderText () {
+        return getHeader().getText();
+    }
+
 
 }
 
