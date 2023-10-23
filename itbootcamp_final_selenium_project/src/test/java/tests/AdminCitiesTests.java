@@ -6,16 +6,11 @@ import org.testng.annotations.Test;
 
 public class AdminCitiesTests extends BasicTest{
 
-    @Test(priority = 1)
+    @Test(priority = 1, retryAnalyzer = retry.class)
     public void visitsTheAdminCitiesPageAndListCities () throws InterruptedException {
-        String adminEmail = "admin@admin.com";
-        String adminPassword = "12345";
 
         navPage.clickOnLoginButton();
-        loginPage.getEmailInputBox().clear();
-        loginPage.getEmailInputBox().sendKeys(adminEmail);
-        loginPage.getEmailInputBox().clear();
-        loginPage.getPasswordInputBox().sendKeys(adminPassword);
+        loginPage.loginAsAdmin();
         loginPage.clickOnLoginButton();
         navPage.clickOnAdminButton();
         navPage.clickOnCitiesButton();
@@ -23,6 +18,21 @@ public class AdminCitiesTests extends BasicTest{
         Assert.assertEquals(navPage.getCurrentUrl(), baseUrl + "/admin/cities",
                 "Current url should be " + baseUrl + "/admin/cities");
 
+    }
+
+    @Test(priority = 2,retryAnalyzer = retry.class)
+    public void checksInutTypesForCreateAndEditNewCity (){
+
+        navPage.clickOnLoginButton();
+        loginPage.loginAsAdmin();
+        loginPage.clickOnLoginButton();
+        navPage.clickOnAdminButton();
+        navPage.clickOnCitiesButton();
+        navPage.waitUntilCurrentUrlContainsAadminCities();
+        citiesPage.clickOnNewItemButton();
+        citiesPage.waitUntilGetNewDialogPopupIsVisible();
+        Assert.assertEquals(citiesPage.getNameInputBoxAttributeValue(), "text",
+                "Name input box for attribute should have 'text'.");
 
     }
 

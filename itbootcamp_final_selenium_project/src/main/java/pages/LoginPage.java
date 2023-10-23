@@ -26,6 +26,27 @@ public class LoginPage extends BasicPage{
         return getPasswordInputBox().getAttribute("type");
     }
 
+    public WebElement getLoginButon (){
+        return driver.findElement(By.cssSelector(".v-btn--is-elevated"));
+    }
+    public void clickOnLoginButton (){
+        getLoginButon().click();
+    }
+
+    public void loginAsAdmin (){
+        String adminEmail = "admin@admin.com";
+        String adminPassword = "12345";
+
+        this.getEmailInputBox().clear();
+        this.getEmailInputBox().sendKeys(adminEmail);
+
+        this.getPasswordInputBox().clear();
+        this.getPasswordInputBox().sendKeys(adminPassword);
+
+
+
+    }
+
 
 
 
