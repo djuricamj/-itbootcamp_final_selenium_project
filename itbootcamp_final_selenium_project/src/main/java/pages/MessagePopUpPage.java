@@ -42,4 +42,15 @@ public class MessagePopUpPage extends BasicPage{
     public void clickOnCloseButton () {
         getCloseButton().click();
     }
+
+    public WebElement getSuccessfulAddOrEditCityMessage (){
+        return driver.findElement(By.cssSelector(".success .v-snack__content"));
+    }
+    public void waitUntilSuccessfulAddOrEditCityMessageIsVisible (){
+        wait
+                .until(ExpectedConditions.visibilityOf(getSuccessfulAddOrEditCityMessage()));
+    }
+    public boolean getTextForSuccessfulAddOrEditCityMessage (){
+        return getSuccessfulAddOrEditCityMessage().getText().contains("Saved successfully");
+    }
 }

@@ -37,5 +37,18 @@ public class CitiesPage extends BasicPage{
         return getNameInputBox().getAttribute("type");
     }
 
+    public WebElement getSaveButton (){
+        return driver.findElement(By.className("btnSave"));
+    }
+    public void waitUntilSaveButtonIsClickable (){
+        wait
+                .withMessage("Save button is not clickable")
+                .until(ExpectedConditions.elementToBeClickable(getSaveButton()));
+    }
+
+    public void clickOnSaveButton (){
+        getSaveButton().click();
+    }
+
 
 }

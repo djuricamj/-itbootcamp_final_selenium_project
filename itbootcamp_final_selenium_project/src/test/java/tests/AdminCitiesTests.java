@@ -38,4 +38,23 @@ public class AdminCitiesTests extends BasicTest{
 
 
 
+    @Test(priority = 3, retryAnalyzer = retry.class)
+    public void createNewCity (){
+        String city = "Marijana Djurica's city";
+
+        this.checksInutTypesForCreateAndEditNewCity();
+
+        citiesPage.getNameInputBox().clear();
+        citiesPage.getNameInputBox().sendKeys(city);
+        citiesPage.waitUntilSaveButtonIsClickable();
+        citiesPage.clickOnSaveButton();
+        messagePopUpPage.waitUntilSuccessfulAddOrEditCityMessageIsVisible();
+        Assert.assertTrue(messagePopUpPage.getTextForSuccessfulAddOrEditCityMessage()
+                , "Popup message for successful add/edit citi should contains 'Saved successfully'");
+
+
+    }
+
+
+
 }
