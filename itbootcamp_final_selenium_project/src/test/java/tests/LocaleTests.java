@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 public class LocaleTests extends BasicTest{
 
     @Test(priority = 1, retryAnalyzer = retry.class)
-    public void  SetLocaleToEs (){
+    public void  setLocaleToEs (){
         navPage.clickOnLanguageButton();
         navPage.waitUntilLanguageListIsVisible();
         navPage.clickOnSpanishLanguage();
@@ -17,12 +17,23 @@ public class LocaleTests extends BasicTest{
     }
 
     @Test(priority = 2, retryAnalyzer = retry.class)
-    public void  SetLocaleToEn (){
+    public void  setLocaleToEn (){
         navPage.clickOnLanguageButton();
         navPage.waitUntilLanguageListIsVisible();
         navPage.clickOnEnglishButton();
-        Assert.assertEquals(navPage.getHeaderText(), " Landing",
+        Assert.assertEquals(navPage.getHeaderText(), "Landing",
                 "Text in header should be ' Landing'.");
+    }
+
+    @Test(priority = 3, retryAnalyzer = retry.class)
+    public void setLocaleToCn (){
+        navPage.clickOnLanguageButton();
+        navPage.waitUntilLanguageListIsVisible();
+        navPage.clickOnChineseLanguage();
+        Assert.assertEquals(navPage.getHeaderText(), "首页",
+                "Text in header should be '首页'.");
+
+
     }
 
 }
