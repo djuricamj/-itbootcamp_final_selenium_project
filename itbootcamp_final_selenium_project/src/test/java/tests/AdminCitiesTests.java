@@ -98,7 +98,24 @@ public class AdminCitiesTests extends BasicTest{
 
 
     }
+    @Test(priority = 5,retryAnalyzer = retry.class)
+    public void deleteCity (){
+        String cityName = "Marijana Djurica's city Edited";
 
+        navPage.clickOnLoginButton();
+        loginPage.loginAsAdmin();
+        loginPage.clickOnLoginButton();
+        navPage.clickOnAdminButton();
+        navPage.clickOnCitiesButton();
+        navPage.waitUntilCurrentUrlContainsAadminCities();
+        citiesPage.getSearchInputBox().sendKeys(cityName);
+        citiesPage.clickOnDeleteButton();
+        citiesPage.waitUntilPopUpMessageForDeleteCityIsVisible();
+        citiesPage.clickOnDeleteButtonFromPopUpMenuForDeleteCity();
+        messagePopUpPage.waitUntilPopUpMessageForSuccessfulDeleteCityIsVisible();
+        Assert.assertTrue(messagePopUpPage.getTextFromPopUpMessageForSuccessfulDeleteCity(),
+                "Message should contains 'Deleted successfully'");
+    }
 
 
 
