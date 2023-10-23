@@ -33,7 +33,15 @@ public class LocaleTests extends BasicTest{
         Assert.assertEquals(navPage.getHeaderText(), "首页",
                 "Text in header should be '首页'.");
 
+    }
 
+    @Test(priority = 4,retryAnalyzer = retry.class)
+    public void setLocaleToFr (){
+        navPage.clickOnLanguageButton();
+        navPage.waitUntilLanguageListIsVisible();
+        navPage.clickOnFrenchLanguage();
+        Assert.assertEquals(navPage.getHeaderText(), "Page d'atterrissage",
+                "Text in header should be  Page d'atterrissage'.");
     }
 
 }
