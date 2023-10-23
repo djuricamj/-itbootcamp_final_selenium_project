@@ -30,6 +30,13 @@ public class AuthRoutesTests extends BasicTest{
 
     }
 
+    @Test(priority = 4, retryAnalyzer = retry.class)
+    public void  ForbidsVisitsToAdminUsersUrlIfNotAuthenticated() {
+        driver.navigate().to(baseUrl + "/admin/users");
+        Assert.assertEquals(navPage.getCurrentUrl(), baseUrl + "/login",
+                "Current url should be " + baseUrl + "/login");
+    }
+
 
 
     }
