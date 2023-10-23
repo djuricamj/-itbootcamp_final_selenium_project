@@ -72,9 +72,7 @@ public class AdminCitiesTests extends BasicTest{
       citiesPage.waitUntilNumberOfRowsOfCitiesInSearchIsOne();
       citiesPage.clickOnEditCityButton();
       citiesPage.getNameInputBox().sendKeys(Keys.CONTROL,"a",Keys.DELETE);
-      Thread.sleep(4000);
       citiesPage.getNameInputBox().sendKeys(newCityName);
-      Thread.sleep(2300);
       citiesPage.clickOnSaveButton();
       messagePopUpPage.waitUntilSuccessfulAddOrEditCityMessageIsVisible();
         Assert.assertTrue(messagePopUpPage.getTextForSuccessfulAddOrEditCityMessage()
@@ -116,6 +114,8 @@ public class AdminCitiesTests extends BasicTest{
         Assert.assertTrue(messagePopUpPage.getTextFromPopUpMessageForSuccessfulDeleteCity(),
                 "Message should contains 'Deleted successfully'");
     }
+
+
 
 
 
