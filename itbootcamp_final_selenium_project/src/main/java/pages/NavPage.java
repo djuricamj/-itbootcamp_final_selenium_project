@@ -148,6 +148,13 @@ public class NavPage extends BasicPage {
         getFrenchLanguage().click();
     }
 
+    public WebElement getUkraineLanguage () {
+        return driver.findElement(By.cssSelector("span.f-ua"));
+    }
+    public void clickOnUkraineLanguage () {
+        getUkraineLanguage().click();
+    }
+
 
 
 }

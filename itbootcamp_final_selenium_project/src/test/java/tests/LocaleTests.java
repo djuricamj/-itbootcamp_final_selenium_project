@@ -41,7 +41,17 @@ public class LocaleTests extends BasicTest{
         navPage.waitUntilLanguageListIsVisible();
         navPage.clickOnFrenchLanguage();
         Assert.assertEquals(navPage.getHeaderText(), "Page d'atterrissage",
-                "Text in header should be  Page d'atterrissage'.");
+                "Text in header should be 'Page d'atterrissage'.");
+    }
+
+    @Test(priority = 5, retryAnalyzer = retry.class)
+    public void setLocaleToUa (){
+        navPage.clickOnLanguageButton();
+        navPage.waitUntilLanguageListIsVisible();
+        navPage.clickOnUkraineLanguage();
+        Assert.assertEquals(navPage.getHeaderText(), "Лендінг",
+                "Text in header should be 'Лендінг'.");
+
     }
 
 }
