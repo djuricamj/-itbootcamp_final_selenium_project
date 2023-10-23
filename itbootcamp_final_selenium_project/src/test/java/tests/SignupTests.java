@@ -1,6 +1,7 @@
 package tests;
 
 import RetryAnalyzer.retry;
+import org.asynchttpclient.request.body.multipart.StringPart;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -52,6 +53,31 @@ public class SignupTests extends BasicTest{
                 "E-mail already exists", "Error message should contains 'E-mail already exists'.");
         Assert.assertEquals(navPage.getCurrentUrl(), baseUrl + "/signup",
                 "Current url should be " + baseUrl + "/signup");
+
+    }
+    @Test(priority = 4, retryAnalyzer = retry.class)
+    public void signup (){
+        String name = "Marijana Djurica";
+        String email = "marijana.djurica@itbootcamp.rs";
+        String password = "12345";
+        String confirmPassword = "12345";
+
+        navPage.clickOnSignUpButton();
+        navPage.waitUntilCurrentUrlContainsSignup();
+        signupPage.getNameInputBox().clear();
+        signupPage.getNameInputBox().sendKeys(name);
+        signupPage.getEmailInpuBox().clear();
+        signupPage.getEmailInpuBox().sendKeys(email);
+        signupPage.getPasswordInputBox().clear();
+        signupPage.getPasswordInputBox().sendKeys(password);
+        signupPage.getConfirmPasswordInputBox().clear();
+        signupPage.getConfirmPasswordInputBox().sendKeys(confirmPassword);
+        signupPage.clickOnSignupButton();
+        navPage.waitUntilCurrentUrlContainsHome();
+        Assert.assertEquals(messagePopUpPage.getTextForMessageForAccountVerify(), "IMPORTANT: Verify your account",
+                "Error message should be 'IMPORTANT: Verify your account'.");
+        messagePopUpPage.clickOnCloseButton();
+        navPage.clickOnLogoutButton();
 
 
     }
