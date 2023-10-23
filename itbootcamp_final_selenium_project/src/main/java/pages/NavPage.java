@@ -102,5 +102,27 @@ public class NavPage extends BasicPage {
                 .withMessage("Current url should contain '/signup'.")
                 .until(ExpectedConditions.urlContains("/signup"));
     }
+
+    public WebElement getAdminButton (){
+        return driver.findElement(By.className("btnAdmin"));
+    }
+    public void clickOnAdminButton (){
+        getAdminButton().click();
+    }
+
+    public WebElement getCitiesButton(){
+        return driver.findElement(By.cssSelector(".btnAdminCities"));
+    }
+    public void clickOnCitiesButton (){
+        getCitiesButton().click();
+    }
+    public void waitUntilCurrentUrlContainsAadminCities() {
+
+        wait
+                .withMessage("Current url should contain '/admin/cities'.")
+                .until(ExpectedConditions.urlContains("/admin/cities"));
+    }
+
+
 }
 
